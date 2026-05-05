@@ -903,8 +903,10 @@ main {
     min-width: 0;
     max-width: 100%;
     max-height: none;
-    overflow: hidden;
+    overflow: visible;
     padding: 0;
+    touch-action: pan-y;
+    overscroll-behavior: auto;
   }
 
   .filters-panel .panel-header {
@@ -924,7 +926,9 @@ main {
   .filters-body {
     display: none;
     padding: 0 12px 14px;
-    overflow-x: hidden;
+    overflow: visible;
+    touch-action: pan-y;
+    overscroll-behavior: auto;
   }
 
   .filters-panel.filters-open .filters-body {
@@ -933,6 +937,7 @@ main {
 
   .filters-panel.filters-open {
     box-shadow: var(--shadow);
+    overflow: visible;
   }
 
   .filters-panel:not(.filters-open)::after {
@@ -945,6 +950,9 @@ main {
 
   .venue-checklist {
     max-height: 46vh;
+    touch-action: pan-y;
+    overscroll-behavior: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .quick-venue-buttons {
@@ -1059,6 +1067,7 @@ main {
     border-top: 1px solid rgba(17, 20, 18, 0.14);
     background: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(10px);
+    touch-action: manipulation;
   }
 
   .mobile-jumpbar a {

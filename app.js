@@ -215,6 +215,8 @@
     document.addEventListener(
       "wheel",
       (event) => {
+        if (isMobileView()) return;
+
         const panel = event.target.closest(".filters-panel");
         if (!panel) return;
 
