@@ -82,95 +82,106 @@
         <aside class="filters-panel" aria-labelledby="filtersTitle">
           <div class="panel-header">
             <h2 id="filtersTitle">Filtri</h2>
-            <button class="ghost-button small" id="resetFilters" type="button">Reset</button>
+            <div class="panel-actions">
+              <button class="ghost-button small mobile-only" id="toggleFilters" type="button" aria-expanded="false">
+                Apri
+              </button>
+              <button class="ghost-button small" id="resetFilters" type="button">Reset</button>
+            </div>
           </div>
 
-          <label class="search-field">
-            <span>Cerca</span>
-            <input id="searchInput" type="search" placeholder="Artista, luogo, genere, autore">
-          </label>
-
-          <label class="select-field sort-field">
-            <span>Ordina</span>
-            <select id="sortFilter">
-              <option value="priority">Priorita consigliata</option>
-              <option value="time">Giorno e orario</option>
-              <option value="venue">Luogo</option>
-            </select>
-          </label>
-
-          <label class="search-field">
-            <span>Location multiple</span>
-            <input id="venueSearch" type="search" placeholder="Filtra location">
-          </label>
-          <div class="selected-venues" id="selectedVenues" aria-live="polite"></div>
-          <button class="ghost-button small full-width" id="toggleVenueList" type="button" aria-expanded="false">
-            Mostra tutte le location
-          </button>
-          <div class="venue-checklist" id="venueChecklist" aria-describedby="venueHelp"></div>
-          <p class="field-help" id="venueHelp">Seleziona una o piu location. Nessuna selezione = tutte.</p>
-          <div class="quick-venue-buttons" id="quickVenueButtons" aria-label="Location principali"></div>
-
-          <fieldset class="filter-group">
-            <legend>Giorno</legend>
-            <div class="day-buttons" id="dayButtons"></div>
-          </fieldset>
-
-          <label class="select-field">
-            <span>Priorita</span>
-            <select id="priorityFilter">
-              <option value="all">Tutte le priorita</option>
-              <option value="Imperdibile">Imperdibile</option>
-              <option value="Molto forte">Molto forte</option>
-              <option value="Interessante">Interessante</option>
-              <option value="Tutti">Tutti</option>
-            </select>
-          </label>
-
-          <label class="select-field">
-            <span>Tipologia musicale</span>
-            <select id="musicTypeFilter"></select>
-          </label>
-
-          <label class="select-field">
-            <span>Genere</span>
-            <select id="genreFilter"></select>
-          </label>
-
-          <label class="select-field">
-            <span>Tipologia evento</span>
-            <select id="typeFilter"></select>
-          </label>
-
-          <label class="select-field">
-            <span>Autore / compositore</span>
-            <select id="authorFilter"></select>
-          </label>
-
-          <label class="select-field">
-            <span>Fascia oraria</span>
-            <select id="dayPartFilter">
-              <option value="all">Tutte</option>
-              <option value="Mattina">Mattina</option>
-              <option value="Pomeriggio">Pomeriggio</option>
-              <option value="Sera">Sera</option>
-              <option value="Notte">Notte</option>
-            </select>
-          </label>
-
-          <div class="toggle-stack" aria-label="Filtri rapidi">
-            <label>
-              <input id="gamOnlyFilter" type="checkbox">
-              <span>Solo GAM / Piano Center</span>
+          <div class="filters-body" id="filtersBody">
+            <label class="search-field">
+              <span>Cerca</span>
+              <input id="searchInput" type="search" placeholder="Artista, luogo, genere, autore">
             </label>
-            <label>
-              <input id="bookingOnlyFilter" type="checkbox">
-              <span>Solo con prenotazione</span>
+
+            <label class="select-field sort-field">
+              <span>Ordina</span>
+              <select id="sortFilter">
+                <option value="priority">Priorita consigliata</option>
+                <option value="time">Giorno e orario</option>
+                <option value="venue">Luogo</option>
+              </select>
             </label>
-            <label>
-              <input id="savedOnlyFilter" type="checkbox">
-              <span>Solo salvati</span>
+
+            <label class="search-field">
+              <span>Location multiple</span>
+              <input id="venueSearch" type="search" placeholder="Filtra location">
             </label>
+            <div class="selected-venues" id="selectedVenues" aria-live="polite"></div>
+            <button class="ghost-button small full-width" id="toggleVenueList" type="button" aria-expanded="false">
+              Mostra tutte le location
+            </button>
+            <div class="venue-checklist" id="venueChecklist" aria-describedby="venueHelp"></div>
+            <p class="field-help" id="venueHelp">Seleziona una o piu location. Nessuna selezione = tutte.</p>
+            <div class="quick-venue-buttons" id="quickVenueButtons" aria-label="Location principali"></div>
+
+            <fieldset class="filter-group">
+              <legend>Giorno</legend>
+              <div class="day-buttons" id="dayButtons"></div>
+            </fieldset>
+
+            <label class="select-field">
+              <span>Priorita</span>
+              <select id="priorityFilter">
+                <option value="all">Tutte le priorita</option>
+                <option value="Imperdibile">Imperdibile</option>
+                <option value="Molto forte">Molto forte</option>
+                <option value="Interessante">Interessante</option>
+                <option value="Tutti">Tutti</option>
+              </select>
+            </label>
+
+            <label class="select-field">
+              <span>Tipologia musicale</span>
+              <select id="musicTypeFilter"></select>
+            </label>
+
+            <label class="select-field">
+              <span>Genere</span>
+              <select id="genreFilter"></select>
+            </label>
+
+            <label class="select-field">
+              <span>Tipologia evento</span>
+              <select id="typeFilter"></select>
+            </label>
+
+            <label class="select-field">
+              <span>Autore / compositore</span>
+              <select id="authorFilter"></select>
+            </label>
+
+            <label class="select-field">
+              <span>Fascia oraria</span>
+              <select id="dayPartFilter">
+                <option value="all">Tutte</option>
+                <option value="Mattina">Mattina</option>
+                <option value="Pomeriggio">Pomeriggio</option>
+                <option value="Sera">Sera</option>
+                <option value="Notte">Notte</option>
+              </select>
+            </label>
+
+            <div class="toggle-stack" aria-label="Filtri rapidi">
+              <label>
+                <input id="gamOnlyFilter" type="checkbox">
+                <span>Solo GAM / Piano Center</span>
+              </label>
+              <label>
+                <input id="bookingOnlyFilter" type="checkbox">
+                <span>Solo con prenotazione</span>
+              </label>
+              <label>
+                <input id="savedOnlyFilter" type="checkbox">
+                <span>Solo salvati</span>
+              </label>
+            </div>
+
+            <button class="primary-button full-width mobile-only" id="jumpToResults" type="button">
+              Vedi risultati
+            </button>
           </div>
         </aside>
 
@@ -206,6 +217,16 @@
       </p>
       <a href="https://pianocitymilano.it/programma/" target="_blank" rel="noreferrer">Fonte ufficiale</a>
     </footer>
+
+    <nav class="mobile-jumpbar" aria-label="Navigazione rapida mobile">
+      <a href="#filtersTitle">Filtri</a>
+      <a href="#resultsTitle">Risultati</a>
+      <a href="#plannerTitle">Scaletta</a>
+    </nav>
+
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Torna all'inizio">
+      Torna su
+    </button>
 
     <script src="data.js"></script>
     <script src="app.js"></script>

@@ -42,6 +42,8 @@
       "toggleVenueList",
       "venueChecklist",
       "quickVenueButtons",
+      "toggleFilters",
+      "filtersBody",
       "priorityFilter",
       "musicTypeFilter",
       "genreFilter",
@@ -64,6 +66,8 @@
       "resetFilters",
       "resetFiltersTop",
       "clearSaved",
+      "jumpToResults",
+      "backToTop",
     ].forEach((id) => {
       els[id] = document.getElementById(id);
     });
@@ -185,6 +189,20 @@
 
     els.resetFilters.addEventListener("click", resetFilters);
     els.resetFiltersTop.addEventListener("click", resetFilters);
+    els.toggleFilters.addEventListener("click", toggleFiltersPanel);
+    els.jumpToResults.addEventListener("click", () => {
+      setMobileFiltersOpen(false);
+      document.getElementById("resultsTitle").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    els.backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    window.addEventListener("scroll", updateBackToTop, { passive: true });
+    window.addEventListener("resize", () => {
+      if (!isMobileView()) {
+        setMobileFiltersOpen(true);
+      }
+    });
     els.clearSaved.addEventListener("click", () => {
       saved.clear();
       persistSaved();
@@ -245,6 +263,9 @@
       persistSaved();
       render();
     });
+
+    setMobileFiltersOpen(!isMobileView());
+    updateBackToTop();
   }
 
   function resetFilters() {
@@ -284,6 +305,23 @@
       chip.classList.toggle("active", chip.dataset.day === "all");
     });
     render();
+  }
+
+  function toggleFiltersPanel() {
+    const panel = els.toggleFilters.closest(".filters-panel");
+    setMobileFiltersOpen(!panel.classList.contains("filters-open"));
+  }
+
+  function setMobileFiltersOpen(open) {
+    const panel = els.toggleFilters.closest(".filters-panel");
+    panel.classList.toggle("filters-open", open);
+    els.toggleFilters.textContent = open ? "Chiudi" : "Apri";
+    els.toggleFilters.setAttribute("aria-expanded", String(open));
+    els.filtersBody.setAttribute("aria-hidden", String(!open && isMobileView()));
+  }
+
+  function updateBackToTop() {
+    els.backToTop.classList.toggle("visible", window.scrollY > 520);
   }
 
   function renderStats() {
@@ -680,6 +718,10 @@
     if (deltaY < 0) return element.scrollTop > 0;
     if (deltaY > 0) return element.scrollTop < maxScroll;
     return false;
+  }
+
+  function isMobileView() {
+    return window.matchMedia("(max-width: 820px)").matches;
   }
 
   function escapeHtml(value) {
