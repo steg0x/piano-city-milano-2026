@@ -887,15 +887,15 @@ main {
   }
 
   .filters-panel {
+    width: 100%;
+    min-width: 0;
     max-height: none;
-    overflow: visible;
+    overflow: hidden;
     padding: 0;
   }
 
   .filters-panel .panel-header {
-    position: sticky;
-    top: 0;
-    z-index: 15;
+    position: static;
     min-height: 56px;
     padding: 12px;
     border-bottom: 1px solid var(--line);
@@ -911,6 +911,7 @@ main {
   .filters-body {
     display: none;
     padding: 0 12px 14px;
+    overflow-x: hidden;
   }
 
   .filters-panel.filters-open .filters-body {
@@ -934,15 +935,40 @@ main {
   }
 
   .quick-venue-buttons {
-    flex-wrap: nowrap;
-    margin-right: -12px;
-    overflow-x: auto;
-    padding-bottom: 4px;
+    flex-wrap: wrap;
+    margin-right: 0;
+    overflow: visible;
+    padding-bottom: 0;
   }
 
   .quick-venue-chip {
-    flex: 0 0 auto;
-    max-width: 78vw;
+    flex: 1 1 150px;
+    min-width: 0;
+    max-width: 100%;
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .day-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .search-field,
+  .select-field,
+  .filter-group,
+  .toggle-stack,
+  .selected-venues,
+  .venue-checklist {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .ghost-button.full-width,
+  .primary-button.full-width {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: center;
   }
 
   .event-card {

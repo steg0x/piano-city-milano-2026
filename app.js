@@ -197,6 +197,9 @@
     els.backToTop.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
+    document.querySelector('.mobile-jumpbar a[href="#filtersTitle"]').addEventListener("click", () => {
+      setMobileFiltersOpen(true);
+    });
     window.addEventListener("scroll", updateBackToTop, { passive: true });
     window.addEventListener("resize", () => {
       if (!isMobileView()) {
@@ -318,10 +321,12 @@
     els.toggleFilters.textContent = open ? "Chiudi" : "Apri";
     els.toggleFilters.setAttribute("aria-expanded", String(open));
     els.filtersBody.setAttribute("aria-hidden", String(!open && isMobileView()));
+    updateBackToTop();
   }
 
   function updateBackToTop() {
-    els.backToTop.classList.toggle("visible", window.scrollY > 520);
+    const filtersOpen = els.toggleFilters.closest(".filters-panel").classList.contains("filters-open");
+    els.backToTop.classList.toggle("visible", window.scrollY > 520 && !filtersOpen);
   }
 
   function renderStats() {
