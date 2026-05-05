@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guida Piano City Milano 2026</title>
+    <meta
+      name="description"
+      content="Guida filtrabile ai concerti di Piano City Milano 2026 con imperdibili, prenotazioni, ascolti e schede ufficiali."
+    >
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23111412'/%3E%3Ctext x='12' y='39' fill='white' font-family='Arial' font-size='20' font-weight='700'%3EPC%3C/text%3E%3C/svg%3E"
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <nav class="topbar" aria-label="Navigazione principale">
+        <a class="brand" href="#top" aria-label="Torna all'inizio">
+          <span class="brand-mark" aria-hidden="true">PC</span>
+          <span>Piano City Milano 2026</span>
+        </a>
+        <div class="topbar-actions">
+          <a href="https://pianocitymilano.it/programma/" target="_blank" rel="noreferrer">Programma ufficiale</a>
+          <button class="ghost-button" id="resetFiltersTop" type="button">Reset</button>
+        </div>
+      </nav>
+
+      <section class="hero" aria-labelledby="pageTitle">
+        <div class="hero-copy">
+          <p class="date-line">14-17 maggio 2026 · Milano</p>
+          <h1 id="pageTitle">Scelta rapida dei concerti da non perdere</h1>
+          <p class="hero-text">
+            Tutto il programma ufficiale, con priorita agli artisti internazionali e ai concerti GAM.
+          </p>
+          <div class="quick-stats" aria-label="Statistiche programma">
+            <div>
+              <strong id="statTotal">266</strong>
+              <span>concerti</span>
+            </div>
+            <div>
+              <strong id="statMust">12</strong>
+              <span>imperdibili</span>
+            </div>
+            <div>
+              <strong id="statGam">24</strong>
+              <span>GAM / Piano Center</span>
+            </div>
+            <div>
+              <strong id="statBooking">0</strong>
+              <span>prenotabili</span>
+            </div>
+            <div>
+              <strong id="statVenues">0</strong>
+              <span>location</span>
+            </div>
+          </div>
+        </div>
+        <figure class="hero-media">
+          <img
+            src="https://distribution-point.webstorage-4sigma.it/pianocity2020-778/static/sito/img/social/pianomi2026_socialshare.png"
+            alt="Visual ufficiale Piano City Milano 2026"
+          >
+        </figure>
+      </section>
+    </header>
+
+    <main>
+      <section class="spotlight-section" aria-labelledby="spotlightTitle">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Shortlist</p>
+            <h2 id="spotlightTitle">Imperdibili per orientarsi subito</h2>
+          </div>
+          <a class="text-link" href="#resultsTitle">Vai a tutti i risultati</a>
+        </div>
+        <div class="spotlight-grid" id="spotlightGrid"></div>
+      </section>
+
+      <section class="app-layout" aria-label="Guida filtrabile">
+        <aside class="filters-panel" aria-labelledby="filtersTitle">
+          <div class="panel-header">
+            <h2 id="filtersTitle">Filtri</h2>
+            <button class="ghost-button small" id="resetFilters" type="button">Reset</button>
+          </div>
+
+          <label class="search-field">
+            <span>Cerca</span>
+            <input id="searchInput" type="search" placeholder="Artista, luogo, genere, autore">
+          </label>
+
+          <label class="select-field sort-field">
+            <span>Ordina</span>
+            <select id="sortFilter">
+              <option value="priority">Priorita consigliata</option>
+              <option value="time">Giorno e orario</option>
+              <option value="venue">Luogo</option>
+            </select>
+          </label>
+
+          <label class="search-field">
+            <span>Location multiple</span>
+            <input id="venueSearch" type="search" placeholder="Filtra location">
+          </label>
+          <div class="selected-venues" id="selectedVenues" aria-live="polite"></div>
+          <button class="ghost-button small full-width" id="toggleVenueList" type="button" aria-expanded="false">
+            Mostra tutte le location
+          </button>
+          <div class="venue-checklist" id="venueChecklist" aria-describedby="venueHelp"></div>
+          <p class="field-help" id="venueHelp">Seleziona una o piu location. Nessuna selezione = tutte.</p>
+          <div class="quick-venue-buttons" id="quickVenueButtons" aria-label="Location principali"></div>
+
+          <fieldset class="filter-group">
+            <legend>Giorno</legend>
+            <div class="day-buttons" id="dayButtons"></div>
+          </fieldset>
+
+          <label class="select-field">
+            <span>Priorita</span>
+            <select id="priorityFilter">
+              <option value="all">Tutte le priorita</option>
+              <option value="Imperdibile">Imperdibile</option>
+              <option value="Molto forte">Molto forte</option>
+              <option value="Interessante">Interessante</option>
+              <option value="Tutti">Tutti</option>
+            </select>
+          </label>
+
+          <label class="select-field">
+            <span>Tipologia musicale</span>
+            <select id="musicTypeFilter"></select>
+          </label>
+
+          <label class="select-field">
+            <span>Genere</span>
+            <select id="genreFilter"></select>
+          </label>
+
+          <label class="select-field">
+            <span>Tipologia evento</span>
+            <select id="typeFilter"></select>
+          </label>
+
+          <label class="select-field">
+            <span>Autore / compositore</span>
+            <select id="authorFilter"></select>
+          </label>
+
+          <label class="select-field">
+            <span>Fascia oraria</span>
+            <select id="dayPartFilter">
+              <option value="all">Tutte</option>
+              <option value="Mattina">Mattina</option>
+              <option value="Pomeriggio">Pomeriggio</option>
+              <option value="Sera">Sera</option>
+              <option value="Notte">Notte</option>
+            </select>
+          </label>
+
+          <div class="toggle-stack" aria-label="Filtri rapidi">
+            <label>
+              <input id="gamOnlyFilter" type="checkbox">
+              <span>Solo GAM / Piano Center</span>
+            </label>
+            <label>
+              <input id="bookingOnlyFilter" type="checkbox">
+              <span>Solo con prenotazione</span>
+            </label>
+            <label>
+              <input id="savedOnlyFilter" type="checkbox">
+              <span>Solo salvati</span>
+            </label>
+          </div>
+        </aside>
+
+        <section class="results-panel" aria-labelledby="resultsTitle">
+          <div class="results-header">
+            <div>
+              <p class="result-count" id="resultCount">0 risultati</p>
+              <h2 id="resultsTitle">Programma filtrabile</h2>
+            </div>
+            <div class="legend" aria-label="Legenda priorita">
+              <span class="legend-dot must"></span> Imperdibile
+              <span class="legend-dot strong"></span> Molto forte
+              <span class="legend-dot interesting"></span> Interessante
+            </div>
+          </div>
+          <div class="events-list" id="eventsList"></div>
+        </section>
+
+        <aside class="planner-panel" aria-labelledby="plannerTitle">
+          <div class="panel-header">
+            <h2 id="plannerTitle">La mia scaletta</h2>
+            <button class="ghost-button small" id="clearSaved" type="button">Svuota</button>
+          </div>
+          <div class="planner-list" id="plannerList"></div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        Dati estratti dal programma ufficiale Piano City Milano. I link di prenotazione rimandano ai canali indicati
+        dagli organizzatori.
+      </p>
+      <a href="https://pianocitymilano.it/programma/" target="_blank" rel="noreferrer">Fonte ufficiale</a>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
